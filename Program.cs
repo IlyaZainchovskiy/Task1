@@ -6,9 +6,59 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            Console.Write("Введіть ім'я: ");
+            string name = Console.ReadLine();
 
+            Console.Write("Введіть вік: ");
+            int age = int.Parse(Console.ReadLine());
+
+            Console.Write("Введіть курс: ");
+            int course = int.Parse(Console.ReadLine());
+
+            Console.Write("Введіть рейтинг: ");
+            double rating = double.Parse(Console.ReadLine());
+
+            Student student = new Student(name, age, course, rating);
+
+            Console.WriteLine("\nІнформація про студента");
+            Console.WriteLine($"Ім'я: {student.Name}");
+            Console.WriteLine($"Вік: {student.Age}");
+            Console.WriteLine($"Курс: {student.Course}");
+            Console.WriteLine($"Рейтинг: {student.Rating}");
+
+            Console.Write("Статус: ");
+            student.StudentRating();
+
+            Console.WriteLine($"Роль: {student.GetRole(student.Course)}");
+            Console.WriteLine("\nХочете відредагувати дані студента? (Y/N)");
+            string ans = Console.ReadLine();
+            if (ans == "Y")
+            {
+                Console.Write("Нове ім'я: ");
+                string newName = Console.ReadLine();
+
+                Console.Write("Новий вік: ");
+                int newAge = int.Parse(Console.ReadLine());
+
+                Console.Write("Новий рейтинг: ");
+                double newRating = double.Parse(Console.ReadLine());
+
+                student.EditStudent(newName, newAge, newRating);
+
+                Console.WriteLine("\n=== Оновлена інформація ===");
+                Console.WriteLine($"Ім'я: {student.Name}");
+                Console.WriteLine($"Вік: {student.Age}");
+                Console.WriteLine($"Курс: {student.Course}");
+                Console.WriteLine($"Рейтинг: {student.Rating}");
+
+                Console.Write("Статус: ");
+                student.StudentRating();
+
+                Console.WriteLine($"Роль: {student.GetRole(student.Course)}");
+            }
         }
-    }
+     }
+}
     class Student
     {
         private string name;
@@ -52,4 +102,4 @@ namespace Task1
                 return "Магістр";
         }
     }
-}
+
